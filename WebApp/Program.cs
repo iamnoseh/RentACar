@@ -4,6 +4,7 @@ using Infrastructure.CustomerService;
 using Infrastructure.DataContext;
 using Infrastructure.LocationService;
 using Infrastructure.RentalService;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +32,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    //app.MapScalarApiReference();
+    app.MapScalarApiReference();
     app.UseSwaggerUI(options => options.SwaggerEndpoint("/openapi/v1.json", "WebApp v1"));
 }
 

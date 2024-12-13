@@ -1,10 +1,11 @@
 using Domain;
+using Infrastructure.ApiResponse;
 
 namespace Infrastructure.RentalService;
 
 public interface IRentalService
 {
-    public bool AddRental(Rental rental);
-    public Rental? GetRentalbyCustomerId(int id);
-    public List<Rental> GetRentals();
+    public Response<bool> AddRental(Rental rental);
+    public Response<Rental> GetRentalbyCustomerId(int id);
+    public Response<List<Rental>> GetRentals();
 }

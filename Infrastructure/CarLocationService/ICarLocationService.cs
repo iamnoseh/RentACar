@@ -1,10 +1,11 @@
 using Domain;
+using Infrastructure.ApiResponse;
 
 namespace Infrastructure.CarLocationService;
 
 public interface ICarLocationService
 {
-    public bool AddCarLocation(CarLocation carLocation);
-    public bool DeleteCarLocation(int id);
-    public List<CarLocation> GetCarLocation();
+    public Response<bool> AddCarLocation(CarLocation carLocation);
+    public Response<bool> DeleteCarLocation(int id);
+    public Response<List<CarLocation>> GetCarLocation();
 }

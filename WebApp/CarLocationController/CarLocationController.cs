@@ -1,4 +1,5 @@
 using Domain;
+using Infrastructure.ApiResponse;
 using Infrastructure.CarLocationService;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,21 +10,21 @@ namespace WebApp.CarLocationController;
 public class CarLocationController(ICarLocationService carLocationService):ControllerBase
 {
     [HttpGet]
-    public List<CarLocation> GetLocations()
+    public Response<List<CarLocation>> GetLocations()
     {
         var res = carLocationService.GetCarLocation();
         return res;
     }
 
     [HttpPost]
-    public bool AddCarLocation(CarLocation carLocation)
+    public Response<bool> AddCarLocation(CarLocation carLocation)
     {
         var res = carLocationService.AddCarLocation(carLocation);
         return res;
     }
 
     [HttpDelete]
-    public bool DeleteCarLocation(int id)
+    public Response<bool> DeleteCarLocation(int id)
     {
         var res = carLocationService.DeleteCarLocation(id);
         return res;

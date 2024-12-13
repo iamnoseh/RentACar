@@ -1,4 +1,5 @@
 using Domain;
+using Infrastructure.ApiResponse;
 using Infrastructure.LocationService;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,35 +10,35 @@ namespace WebApp.LocationController;
 public class LocationController(ILocationService locationService):ControllerBase
 {
     [HttpGet]
-    public List<Location> GetLocation()
+    public Response<List<Location>> GetLocation()
     {
         var res = locationService.GetLocations();
         return res;
     }
 
     [HttpGet("[action]/{id}")]
-    public Location GetLocationById(int id)
+    public Response<Location> GetLocationById(int id)
     {
         var res = locationService.GetLocationById(id);
         return res;
     }
 
     [HttpPost]
-    public bool AddLocation(Location location)
+    public Response<bool> AddLocation(Location location)
     {
         var res = locationService.AddLocation(location);
         return res;
     }
 
     [HttpPut]
-    public bool UpdateLocation(Location location)
+    public Response<bool> UpdateLocation(Location location)
     {
         var res = locationService.UpdateLocation(location);
         return res;
     }
 
     [HttpDelete]
-    public bool DeleteLocation(int id)
+    public Response<bool> DeleteLocation(int id)
     {
         var res = locationService.DeleteLocation(id);
         return res;
